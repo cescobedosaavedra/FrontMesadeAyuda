@@ -5,7 +5,7 @@
         <%-- <asp:Panel Height="128px" ID="Panel5" runat="server">--%>
         <table width="950px" style="border: 1px double #666666; border-radius: 6px; -webkit-box-shadow: 10 1px 2px #ff0000; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 11px; color: #3C3C3C; background-color: #FFFFFF;">
             <tr>
-                <td>C#</td>
+                <td>Desarrollo en C#</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
