@@ -32,7 +32,7 @@ namespace principal
 
         protected void btn_registrar_Click(object sender, EventArgs e)
         {
-
+            //Aqui irá el codigo de registro de tickets
         }
 
 
