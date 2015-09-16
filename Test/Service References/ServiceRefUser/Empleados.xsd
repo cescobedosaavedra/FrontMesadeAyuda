@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:49750/Empleados.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" />
+  <xs:element name="CrearEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ApellidoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CorreoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AreaEmpleado" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CrearEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" minOccurs="0" name="CrearEmpleadoResult" nillable="true" type="q1:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" minOccurs="0" name="ObtenerEmpleadoResult" nillable="true" type="q2:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
+        <xs:element minOccurs="0" name="ApellidoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CorreoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AreaEmpleado" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" minOccurs="0" name="ModificarEmpleadoResult" nillable="true" type="q3:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarEmpleado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarEmpleadoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" minOccurs="0" name="EliminarEmpleadoResult" nillable="true" type="q4:Empleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEmpleados">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarEmpleadosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" minOccurs="0" name="ListarEmpleadosResult" nillable="true" type="q5:ArrayOfEmpleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -14,13 +14,31 @@ Option Explicit On
 Partial Public Class registrotickets
 
     '''<summary>
-    '''Panel5 control.
+    '''RequiredFieldValidator1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Panel5 As Global.System.Web.UI.WebControls.Panel
+    Protected WithEvents RequiredFieldValidator1 As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
+    '''txt_dni control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txt_dni As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''btn_cargar control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents btn_cargar As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''txt_nombre control.
@@ -32,6 +50,15 @@ Partial Public Class registrotickets
     Protected WithEvents txt_nombre As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''rf_nombre control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rf_nombre As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''txt_apellido control.
     '''</summary>
     '''<remarks>
@@ -39,6 +66,15 @@ Partial Public Class registrotickets
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txt_apellido As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''rf_apellido control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rf_apellido As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''txt_correo control.
@@ -50,6 +86,15 @@ Partial Public Class registrotickets
     Protected WithEvents txt_correo As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''rf_correo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rf_correo As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''txt_cargo control.
     '''</summary>
     '''<remarks>
@@ -57,6 +102,15 @@ Partial Public Class registrotickets
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txt_cargo As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''rf_cargo control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rf_cargo As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''txt_telefono control.
@@ -68,6 +122,15 @@ Partial Public Class registrotickets
     Protected WithEvents txt_telefono As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''rf_telefono control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rf_telefono As Global.System.Web.UI.WebControls.RequiredFieldValidator
+
+    '''<summary>
     '''DropDownList1 control.
     '''</summary>
     '''<remarks>
@@ -75,24 +138,6 @@ Partial Public Class registrotickets
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents DropDownList1 As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
-    '''Panel2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Panel2 As Global.System.Web.UI.WebControls.Panel
-
-    '''<summary>
-    '''Panel1 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Panel1 As Global.System.Web.UI.WebControls.Panel
 
     '''<summary>
     '''txt_Numticket control.
@@ -122,31 +167,40 @@ Partial Public Class registrotickets
     Protected WithEvents txt_TiempoT As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''txt_estadoTicket control.
+    '''comb_estado control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txt_estadoTicket As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents comb_estado As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txt_prioridad control.
+    '''comb_prioridad control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txt_prioridad As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents comb_prioridad As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''TextBox1 control.
+    '''txt_asunto control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents TextBox1 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txt_asunto As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''rf_asunto control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents rf_asunto As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''txt_descripcion control.
@@ -156,6 +210,15 @@ Partial Public Class registrotickets
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txt_descripcion As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''RequiredFieldValidator8 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents RequiredFieldValidator8 As Global.System.Web.UI.WebControls.RequiredFieldValidator
 
     '''<summary>
     '''btn_registrar control.
