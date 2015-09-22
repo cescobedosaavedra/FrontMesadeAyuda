@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="GuardaTickets" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:58785/GuardaTickets.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:58785/GuardaTickets.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:58785/GuardaTickets.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IGuardaTickets_InsertarTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarTicket" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_InsertarTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsertarTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_ObtenerTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTicket" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_ObtenerTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_ModificarTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarTicket" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_ModificarTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_EliminarTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTicket" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_EliminarTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_ListarTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTicket" />
+  </wsdl:message>
+  <wsdl:message name="IGuardaTickets_ListarTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarTicketResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IGuardaTickets">
+    <wsdl:operation name="InsertarTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGuardaTickets/InsertarTicket" message="tns:IGuardaTickets_InsertarTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGuardaTickets/InsertarTicketResponse" message="tns:IGuardaTickets_InsertarTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGuardaTickets/ObtenerTicket" message="tns:IGuardaTickets_ObtenerTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGuardaTickets/ObtenerTicketResponse" message="tns:IGuardaTickets_ObtenerTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGuardaTickets/ModificarTicket" message="tns:IGuardaTickets_ModificarTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGuardaTickets/ModificarTicketResponse" message="tns:IGuardaTickets_ModificarTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGuardaTickets/EliminarTicket" message="tns:IGuardaTickets_EliminarTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGuardaTickets/EliminarTicketResponse" message="tns:IGuardaTickets_EliminarTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IGuardaTickets/ListarTicket" message="tns:IGuardaTickets_ListarTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IGuardaTickets/ListarTicketResponse" message="tns:IGuardaTickets_ListarTicket_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IGuardaTickets" type="tns:IGuardaTickets">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="InsertarTicket">
+      <soap:operation soapAction="http://tempuri.org/IGuardaTickets/InsertarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerTicket">
+      <soap:operation soapAction="http://tempuri.org/IGuardaTickets/ObtenerTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarTicket">
+      <soap:operation soapAction="http://tempuri.org/IGuardaTickets/ModificarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarTicket">
+      <soap:operation soapAction="http://tempuri.org/IGuardaTickets/EliminarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarTicket">
+      <soap:operation soapAction="http://tempuri.org/IGuardaTickets/ListarTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="GuardaTickets">
+    <wsdl:port name="BasicHttpBinding_IGuardaTickets" binding="tns:BasicHttpBinding_IGuardaTickets">
+      <soap:address location="http://localhost:58785/GuardaTickets.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

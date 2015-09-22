@@ -110,6 +110,7 @@
     <Content Include="Account\OpenAuthProviders.ascx" />
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\RegisterExternalLogin.aspx" />
+    <Content Include="Bandeja.aspx" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -194,6 +195,19 @@
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <None Include="Service References\RegistroTicketsServices\GuardaTickets.wsdl" />
+    <None Include="Service References\RegistroTicketsServices\GuardaTickets.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroTicketsServices\GuardaTickets1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroTicketsServices\GuardaTickets2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\RegistroTicketsServices\principal.RegistroTicketsServices.GuardaTicket.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Service References\ServiceReference1\Empleados.wsdl" />
     <None Include="Service References\ServiceReference1\Empleados.xsd">
       <SubType>Designer</SubType>
@@ -203,6 +217,13 @@
     </None>
     <None Include="Service References\ServiceReference1\Empleados2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RegistroTicketsServices\GuardaTickets.disco" />
+    <None Include="Service References\RegistroTicketsServices\configuration91.svcinfo" />
+    <None Include="Service References\RegistroTicketsServices\configuration.svcinfo" />
+    <None Include="Service References\RegistroTicketsServices\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
     <Content Include="Service References\ServiceReference1\principal.ServiceReference1.Empleado.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -283,6 +304,13 @@
       <DependentUpon>RegisterExternalLogin.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Bandeja.aspx.cs">
+      <DependentUpon>Bandeja.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bandeja.aspx.designer.cs">
+      <DependentUpon>Bandeja.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -310,6 +338,11 @@
     <Compile Include="RegistroTickets.aspx.designer.cs">
       <DependentUpon>RegistroTickets.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\RegistroTicketsServices\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -331,6 +364,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RegistroTicketsServices\" />
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />
     <WCFMetadataStorage Include="Service References\ServiceRefUser\" />
   </ItemGroup>

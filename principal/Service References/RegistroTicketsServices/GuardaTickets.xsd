@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:58785/GuardaTickets.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" />
+  <xs:element name="InsertarTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="N_Ticket" type="xs:int" />
+        <xs:element minOccurs="0" name="F_creacion" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
+        <xs:element minOccurs="0" name="NombreEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApellidoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CorreoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AreaEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AsuntoTicket" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ObservacionTicket" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertarTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" minOccurs="0" name="InsertarTicketResult" nillable="true" type="q1:GuardaTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" minOccurs="0" name="ObtenerTicketResult" nillable="true" type="q2:GuardaTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+        <xs:element minOccurs="0" name="N_Ticket" type="xs:int" />
+        <xs:element minOccurs="0" name="F_creacion" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
+        <xs:element minOccurs="0" name="NombreEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApellidoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CorreoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AreaEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AsuntoTicket" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ObservacionTicket" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" minOccurs="0" name="ModificarTicketResult" nillable="true" type="q3:GuardaTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarTicket">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" minOccurs="0" name="EliminarTicketResult" nillable="true" type="q4:GuardaTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTicket">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarTicketResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" minOccurs="0" name="ListarTicketResult" nillable="true" type="q5:ArrayOfGuardaTicket" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

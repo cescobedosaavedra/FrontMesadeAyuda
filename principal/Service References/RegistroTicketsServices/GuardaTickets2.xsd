@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RegistrodeTickets.Dominio" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="GuardaTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ApellidoEmpleado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AreaEmpleado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AsuntoTicket" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
+      <xs:element minOccurs="0" name="CorreoEmpleado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="F_creacion" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="N_ticket" type="xs:int" />
+      <xs:element minOccurs="0" name="NombreEmpleado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Obs_atencion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ObservacionTicket" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GuardaTicket" nillable="true" type="tns:GuardaTicket" />
+  <xs:complexType name="ArrayOfGuardaTicket">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GuardaTicket" nillable="true" type="tns:GuardaTicket" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGuardaTicket" nillable="true" type="tns:ArrayOfGuardaTicket" />
+</xs:schema>
