@@ -7,7 +7,9 @@
       <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
       <xs:element minOccurs="0" name="CorreoEmpleado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NombreEmpleado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

@@ -38,7 +38,13 @@ namespace principal.ServiceRefUser {
         private string CorreoEmpleadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreEmpleadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PasswordField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelefonoEmpleadoField;
@@ -119,6 +125,19 @@ namespace principal.ServiceRefUser {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string NombreEmpleado {
             get {
                 return this.NombreEmpleadoField;
@@ -127,6 +146,19 @@ namespace principal.ServiceRefUser {
                 if ((object.ReferenceEquals(this.NombreEmpleadoField, value) != true)) {
                     this.NombreEmpleadoField = value;
                     this.RaisePropertyChanged("NombreEmpleado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Password {
+            get {
+                return this.PasswordField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PasswordField, value) != true)) {
+                    this.PasswordField = value;
+                    this.RaisePropertyChanged("Password");
                 }
             }
         }
@@ -159,10 +191,10 @@ namespace principal.ServiceRefUser {
     public interface IEmpleados {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleados/CrearEmpleado", ReplyAction="http://tempuri.org/IEmpleados/CrearEmpleadoResponse")]
-        principal.ServiceRefUser.Empleado CrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado);
+        principal.ServiceRefUser.Empleado CrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IEmpleados/CrearEmpleado", ReplyAction="http://tempuri.org/IEmpleados/CrearEmpleadoResponse")]
-        System.IAsyncResult BeginCrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginCrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado, System.AsyncCallback callback, object asyncState);
         
         principal.ServiceRefUser.Empleado EndCrearEmpleado(System.IAsyncResult result);
         
@@ -175,10 +207,10 @@ namespace principal.ServiceRefUser {
         principal.ServiceRefUser.Empleado EndObtenerEmpleado(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleados/ModificarEmpleado", ReplyAction="http://tempuri.org/IEmpleados/ModificarEmpleadoResponse")]
-        principal.ServiceRefUser.Empleado ModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado);
+        principal.ServiceRefUser.Empleado ModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IEmpleados/ModificarEmpleado", ReplyAction="http://tempuri.org/IEmpleados/ModificarEmpleadoResponse")]
-        System.IAsyncResult BeginModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado, System.AsyncCallback callback, object asyncState);
         
         principal.ServiceRefUser.Empleado EndModificarEmpleado(System.IAsyncResult result);
         
@@ -197,6 +229,14 @@ namespace principal.ServiceRefUser {
         System.IAsyncResult BeginListarEmpleados(System.AsyncCallback callback, object asyncState);
         
         principal.ServiceRefUser.Empleado[] EndListarEmpleados(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IEmpleados/VerificarUsuario", ReplyAction="http://tempuri.org/IEmpleados/VerificarUsuarioResponse")]
+        principal.ServiceRefUser.Empleado VerificarUsuario(string NonmbreEmpleado, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IEmpleados/VerificarUsuario", ReplyAction="http://tempuri.org/IEmpleados/VerificarUsuarioResponse")]
+        System.IAsyncResult BeginVerificarUsuario(string NonmbreEmpleado, string Password, System.AsyncCallback callback, object asyncState);
+        
+        principal.ServiceRefUser.Empleado EndVerificarUsuario(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -300,6 +340,25 @@ namespace principal.ServiceRefUser {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class VerificarUsuarioCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public VerificarUsuarioCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public principal.ServiceRefUser.Empleado Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((principal.ServiceRefUser.Empleado)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class EmpleadosClient : System.ServiceModel.ClientBase<principal.ServiceRefUser.IEmpleados>, principal.ServiceRefUser.IEmpleados {
         
         private BeginOperationDelegate onBeginCrearEmpleadoDelegate;
@@ -332,6 +391,12 @@ namespace principal.ServiceRefUser {
         
         private System.Threading.SendOrPostCallback onListarEmpleadosCompletedDelegate;
         
+        private BeginOperationDelegate onBeginVerificarUsuarioDelegate;
+        
+        private EndOperationDelegate onEndVerificarUsuarioDelegate;
+        
+        private System.Threading.SendOrPostCallback onVerificarUsuarioCompletedDelegate;
+        
         public EmpleadosClient() {
         }
         
@@ -361,13 +426,15 @@ namespace principal.ServiceRefUser {
         
         public event System.EventHandler<ListarEmpleadosCompletedEventArgs> ListarEmpleadosCompleted;
         
-        public principal.ServiceRefUser.Empleado CrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado) {
-            return base.Channel.CrearEmpleado(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado);
+        public event System.EventHandler<VerificarUsuarioCompletedEventArgs> VerificarUsuarioCompleted;
+        
+        public principal.ServiceRefUser.Empleado CrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado) {
+            return base.Channel.CrearEmpleado(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginCrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginCrearEmpleado(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, callback, asyncState);
+        public System.IAsyncResult BeginCrearEmpleado(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCrearEmpleado(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -381,7 +448,9 @@ namespace principal.ServiceRefUser {
             string CargoEmpleado = ((string)(inValues[2]));
             string TelefonoEmpleado = ((string)(inValues[3]));
             string AreaEmpleado = ((string)(inValues[4]));
-            return this.BeginCrearEmpleado(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, callback, asyncState);
+            string Password = ((string)(inValues[5]));
+            string Estado = ((string)(inValues[6]));
+            return this.BeginCrearEmpleado(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado, callback, asyncState);
         }
         
         private object[] OnEndCrearEmpleado(System.IAsyncResult result) {
@@ -397,11 +466,11 @@ namespace principal.ServiceRefUser {
             }
         }
         
-        public void CrearEmpleadoAsync(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado) {
-            this.CrearEmpleadoAsync(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, null);
+        public void CrearEmpleadoAsync(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado) {
+            this.CrearEmpleadoAsync(ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado, null);
         }
         
-        public void CrearEmpleadoAsync(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, object userState) {
+        public void CrearEmpleadoAsync(string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado, object userState) {
             if ((this.onBeginCrearEmpleadoDelegate == null)) {
                 this.onBeginCrearEmpleadoDelegate = new BeginOperationDelegate(this.OnBeginCrearEmpleado);
             }
@@ -416,7 +485,9 @@ namespace principal.ServiceRefUser {
                         CorreoEmpleado,
                         CargoEmpleado,
                         TelefonoEmpleado,
-                        AreaEmpleado}, this.onEndCrearEmpleadoDelegate, this.onCrearEmpleadoCompletedDelegate, userState);
+                        AreaEmpleado,
+                        Password,
+                        Estado}, this.onEndCrearEmpleadoDelegate, this.onCrearEmpleadoCompletedDelegate, userState);
         }
         
         public principal.ServiceRefUser.Empleado ObtenerEmpleado(int CodEmpleado) {
@@ -469,13 +540,13 @@ namespace principal.ServiceRefUser {
                         CodEmpleado}, this.onEndObtenerEmpleadoDelegate, this.onObtenerEmpleadoCompletedDelegate, userState);
         }
         
-        public principal.ServiceRefUser.Empleado ModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado) {
-            return base.Channel.ModificarEmpleado(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado);
+        public principal.ServiceRefUser.Empleado ModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado) {
+            return base.Channel.ModificarEmpleado(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        public System.IAsyncResult BeginModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginModificarEmpleado(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, callback, asyncState);
+        public System.IAsyncResult BeginModificarEmpleado(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginModificarEmpleado(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -490,7 +561,9 @@ namespace principal.ServiceRefUser {
             string CargoEmpleado = ((string)(inValues[3]));
             string TelefonoEmpleado = ((string)(inValues[4]));
             string AreaEmpleado = ((string)(inValues[5]));
-            return this.BeginModificarEmpleado(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, callback, asyncState);
+            string Password = ((string)(inValues[6]));
+            string Estado = ((string)(inValues[7]));
+            return this.BeginModificarEmpleado(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado, callback, asyncState);
         }
         
         private object[] OnEndModificarEmpleado(System.IAsyncResult result) {
@@ -506,11 +579,11 @@ namespace principal.ServiceRefUser {
             }
         }
         
-        public void ModificarEmpleadoAsync(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado) {
-            this.ModificarEmpleadoAsync(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, null);
+        public void ModificarEmpleadoAsync(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado) {
+            this.ModificarEmpleadoAsync(CodEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, Password, Estado, null);
         }
         
-        public void ModificarEmpleadoAsync(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, object userState) {
+        public void ModificarEmpleadoAsync(int CodEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string Password, string Estado, object userState) {
             if ((this.onBeginModificarEmpleadoDelegate == null)) {
                 this.onBeginModificarEmpleadoDelegate = new BeginOperationDelegate(this.OnBeginModificarEmpleado);
             }
@@ -526,7 +599,9 @@ namespace principal.ServiceRefUser {
                         CorreoEmpleado,
                         CargoEmpleado,
                         TelefonoEmpleado,
-                        AreaEmpleado}, this.onEndModificarEmpleadoDelegate, this.onModificarEmpleadoCompletedDelegate, userState);
+                        AreaEmpleado,
+                        Password,
+                        Estado}, this.onEndModificarEmpleadoDelegate, this.onModificarEmpleadoCompletedDelegate, userState);
         }
         
         public principal.ServiceRefUser.Empleado EliminarEmpleado(int CodEmpleado) {
@@ -625,6 +700,58 @@ namespace principal.ServiceRefUser {
                 this.onListarEmpleadosCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnListarEmpleadosCompleted);
             }
             base.InvokeAsync(this.onBeginListarEmpleadosDelegate, null, this.onEndListarEmpleadosDelegate, this.onListarEmpleadosCompletedDelegate, userState);
+        }
+        
+        public principal.ServiceRefUser.Empleado VerificarUsuario(string NonmbreEmpleado, string Password) {
+            return base.Channel.VerificarUsuario(NonmbreEmpleado, Password);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginVerificarUsuario(string NonmbreEmpleado, string Password, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginVerificarUsuario(NonmbreEmpleado, Password, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public principal.ServiceRefUser.Empleado EndVerificarUsuario(System.IAsyncResult result) {
+            return base.Channel.EndVerificarUsuario(result);
+        }
+        
+        private System.IAsyncResult OnBeginVerificarUsuario(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string NonmbreEmpleado = ((string)(inValues[0]));
+            string Password = ((string)(inValues[1]));
+            return this.BeginVerificarUsuario(NonmbreEmpleado, Password, callback, asyncState);
+        }
+        
+        private object[] OnEndVerificarUsuario(System.IAsyncResult result) {
+            principal.ServiceRefUser.Empleado retVal = this.EndVerificarUsuario(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnVerificarUsuarioCompleted(object state) {
+            if ((this.VerificarUsuarioCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.VerificarUsuarioCompleted(this, new VerificarUsuarioCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void VerificarUsuarioAsync(string NonmbreEmpleado, string Password) {
+            this.VerificarUsuarioAsync(NonmbreEmpleado, Password, null);
+        }
+        
+        public void VerificarUsuarioAsync(string NonmbreEmpleado, string Password, object userState) {
+            if ((this.onBeginVerificarUsuarioDelegate == null)) {
+                this.onBeginVerificarUsuarioDelegate = new BeginOperationDelegate(this.OnBeginVerificarUsuario);
+            }
+            if ((this.onEndVerificarUsuarioDelegate == null)) {
+                this.onEndVerificarUsuarioDelegate = new EndOperationDelegate(this.OnEndVerificarUsuario);
+            }
+            if ((this.onVerificarUsuarioCompletedDelegate == null)) {
+                this.onVerificarUsuarioCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnVerificarUsuarioCompleted);
+            }
+            base.InvokeAsync(this.onBeginVerificarUsuarioDelegate, new object[] {
+                        NonmbreEmpleado,
+                        Password}, this.onEndVerificarUsuarioDelegate, this.onVerificarUsuarioCompletedDelegate, userState);
         }
     }
 }

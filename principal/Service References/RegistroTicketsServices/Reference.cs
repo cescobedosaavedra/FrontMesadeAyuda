@@ -56,10 +56,10 @@ namespace principal.RegistroTicketsServices {
         private string NombreEmpleadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string Obs_atencionField;
+        private string ObservacionTicketField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ObservacionTicketField;
+        private string PrioridadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TelefonoEmpleadoField;
@@ -218,19 +218,6 @@ namespace principal.RegistroTicketsServices {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Obs_atencion {
-            get {
-                return this.Obs_atencionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.Obs_atencionField, value) != true)) {
-                    this.Obs_atencionField = value;
-                    this.RaisePropertyChanged("Obs_atencion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ObservacionTicket {
             get {
                 return this.ObservacionTicketField;
@@ -239,6 +226,19 @@ namespace principal.RegistroTicketsServices {
                 if ((object.ReferenceEquals(this.ObservacionTicketField, value) != true)) {
                     this.ObservacionTicketField = value;
                     this.RaisePropertyChanged("ObservacionTicket");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Prioridad {
+            get {
+                return this.PrioridadField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PrioridadField, value) != true)) {
+                    this.PrioridadField = value;
+                    this.RaisePropertyChanged("Prioridad");
                 }
             }
         }
@@ -271,19 +271,60 @@ namespace principal.RegistroTicketsServices {
     public interface IGuardaTickets {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGuardaTickets/InsertarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/InsertarTicketResponse")]
-        principal.RegistroTicketsServices.GuardaTicket InsertarTicket(int N_Ticket, System.DateTime F_creacion, string Estado, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket);
+        principal.RegistroTicketsServices.GuardaTicket InsertarTicket(int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGuardaTickets/InsertarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/InsertarTicketResponse")]
+        System.IAsyncResult BeginInsertarTicket(int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket, System.AsyncCallback callback, object asyncState);
+        
+        principal.RegistroTicketsServices.GuardaTicket EndInsertarTicket(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGuardaTickets/ObtenerTicket", ReplyAction="http://tempuri.org/IGuardaTickets/ObtenerTicketResponse")]
         principal.RegistroTicketsServices.GuardaTicket ObtenerTicket(int Id);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGuardaTickets/ObtenerTicket", ReplyAction="http://tempuri.org/IGuardaTickets/ObtenerTicketResponse")]
+        System.IAsyncResult BeginObtenerTicket(int Id, System.AsyncCallback callback, object asyncState);
+        
+        principal.RegistroTicketsServices.GuardaTicket EndObtenerTicket(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGuardaTickets/ModificarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/ModificarTicketResponse")]
-        principal.RegistroTicketsServices.GuardaTicket ModificarTicket(int Id, int N_Ticket, System.DateTime F_creacion, string Estado, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket);
+        principal.RegistroTicketsServices.GuardaTicket ModificarTicket(int Id, int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGuardaTickets/ModificarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/ModificarTicketResponse")]
+        System.IAsyncResult BeginModificarTicket(
+                    int Id, 
+                    int N_Ticket, 
+                    System.DateTime F_creacion, 
+                    string Estado, 
+                    string Prioridad, 
+                    int CodEmpleado, 
+                    string NombreEmpleado, 
+                    string ApellidoEmpleado, 
+                    string CorreoEmpleado, 
+                    string CargoEmpleado, 
+                    string TelefonoEmpleado, 
+                    string AreaEmpleado, 
+                    string AsuntoTicket, 
+                    string ObservacionTicket, 
+                    System.AsyncCallback callback, 
+                    object asyncState);
+        
+        principal.RegistroTicketsServices.GuardaTicket EndModificarTicket(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGuardaTickets/EliminarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/EliminarTicketResponse")]
         principal.RegistroTicketsServices.GuardaTicket EliminarTicket(int Id);
         
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGuardaTickets/EliminarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/EliminarTicketResponse")]
+        System.IAsyncResult BeginEliminarTicket(int Id, System.AsyncCallback callback, object asyncState);
+        
+        principal.RegistroTicketsServices.GuardaTicket EndEliminarTicket(System.IAsyncResult result);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGuardaTickets/ListarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/ListarTicketResponse")]
         principal.RegistroTicketsServices.GuardaTicket[] ListarTicket();
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IGuardaTickets/ListarTicket", ReplyAction="http://tempuri.org/IGuardaTickets/ListarTicketResponse")]
+        System.IAsyncResult BeginListarTicket(System.AsyncCallback callback, object asyncState);
+        
+        principal.RegistroTicketsServices.GuardaTicket[] EndListarTicket(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -292,7 +333,132 @@ namespace principal.RegistroTicketsServices {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InsertarTicketCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public InsertarTicketCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public principal.RegistroTicketsServices.GuardaTicket Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((principal.RegistroTicketsServices.GuardaTicket)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ObtenerTicketCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ObtenerTicketCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public principal.RegistroTicketsServices.GuardaTicket Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((principal.RegistroTicketsServices.GuardaTicket)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ModificarTicketCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ModificarTicketCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public principal.RegistroTicketsServices.GuardaTicket Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((principal.RegistroTicketsServices.GuardaTicket)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class EliminarTicketCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public EliminarTicketCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public principal.RegistroTicketsServices.GuardaTicket Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((principal.RegistroTicketsServices.GuardaTicket)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class ListarTicketCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public ListarTicketCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public principal.RegistroTicketsServices.GuardaTicket[] Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((principal.RegistroTicketsServices.GuardaTicket[])(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class GuardaTicketsClient : System.ServiceModel.ClientBase<principal.RegistroTicketsServices.IGuardaTickets>, principal.RegistroTicketsServices.IGuardaTickets {
+        
+        private BeginOperationDelegate onBeginInsertarTicketDelegate;
+        
+        private EndOperationDelegate onEndInsertarTicketDelegate;
+        
+        private System.Threading.SendOrPostCallback onInsertarTicketCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginObtenerTicketDelegate;
+        
+        private EndOperationDelegate onEndObtenerTicketDelegate;
+        
+        private System.Threading.SendOrPostCallback onObtenerTicketCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginModificarTicketDelegate;
+        
+        private EndOperationDelegate onEndModificarTicketDelegate;
+        
+        private System.Threading.SendOrPostCallback onModificarTicketCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginEliminarTicketDelegate;
+        
+        private EndOperationDelegate onEndEliminarTicketDelegate;
+        
+        private System.Threading.SendOrPostCallback onEliminarTicketCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginListarTicketDelegate;
+        
+        private EndOperationDelegate onEndListarTicketDelegate;
+        
+        private System.Threading.SendOrPostCallback onListarTicketCompletedDelegate;
         
         public GuardaTicketsClient() {
         }
@@ -313,24 +479,328 @@ namespace principal.RegistroTicketsServices {
                 base(binding, remoteAddress) {
         }
         
-        public principal.RegistroTicketsServices.GuardaTicket InsertarTicket(int N_Ticket, System.DateTime F_creacion, string Estado, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket) {
-            return base.Channel.InsertarTicket(N_Ticket, F_creacion, Estado, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket);
+        public event System.EventHandler<InsertarTicketCompletedEventArgs> InsertarTicketCompleted;
+        
+        public event System.EventHandler<ObtenerTicketCompletedEventArgs> ObtenerTicketCompleted;
+        
+        public event System.EventHandler<ModificarTicketCompletedEventArgs> ModificarTicketCompleted;
+        
+        public event System.EventHandler<EliminarTicketCompletedEventArgs> EliminarTicketCompleted;
+        
+        public event System.EventHandler<ListarTicketCompletedEventArgs> ListarTicketCompleted;
+        
+        public principal.RegistroTicketsServices.GuardaTicket InsertarTicket(int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket) {
+            return base.Channel.InsertarTicket(N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginInsertarTicket(int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginInsertarTicket(N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public principal.RegistroTicketsServices.GuardaTicket EndInsertarTicket(System.IAsyncResult result) {
+            return base.Channel.EndInsertarTicket(result);
+        }
+        
+        private System.IAsyncResult OnBeginInsertarTicket(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int N_Ticket = ((int)(inValues[0]));
+            System.DateTime F_creacion = ((System.DateTime)(inValues[1]));
+            string Estado = ((string)(inValues[2]));
+            string Prioridad = ((string)(inValues[3]));
+            int CodEmpleado = ((int)(inValues[4]));
+            string NombreEmpleado = ((string)(inValues[5]));
+            string ApellidoEmpleado = ((string)(inValues[6]));
+            string CorreoEmpleado = ((string)(inValues[7]));
+            string CargoEmpleado = ((string)(inValues[8]));
+            string TelefonoEmpleado = ((string)(inValues[9]));
+            string AreaEmpleado = ((string)(inValues[10]));
+            string AsuntoTicket = ((string)(inValues[11]));
+            string ObservacionTicket = ((string)(inValues[12]));
+            return this.BeginInsertarTicket(N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket, callback, asyncState);
+        }
+        
+        private object[] OnEndInsertarTicket(System.IAsyncResult result) {
+            principal.RegistroTicketsServices.GuardaTicket retVal = this.EndInsertarTicket(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnInsertarTicketCompleted(object state) {
+            if ((this.InsertarTicketCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.InsertarTicketCompleted(this, new InsertarTicketCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void InsertarTicketAsync(int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket) {
+            this.InsertarTicketAsync(N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket, null);
+        }
+        
+        public void InsertarTicketAsync(int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket, object userState) {
+            if ((this.onBeginInsertarTicketDelegate == null)) {
+                this.onBeginInsertarTicketDelegate = new BeginOperationDelegate(this.OnBeginInsertarTicket);
+            }
+            if ((this.onEndInsertarTicketDelegate == null)) {
+                this.onEndInsertarTicketDelegate = new EndOperationDelegate(this.OnEndInsertarTicket);
+            }
+            if ((this.onInsertarTicketCompletedDelegate == null)) {
+                this.onInsertarTicketCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnInsertarTicketCompleted);
+            }
+            base.InvokeAsync(this.onBeginInsertarTicketDelegate, new object[] {
+                        N_Ticket,
+                        F_creacion,
+                        Estado,
+                        Prioridad,
+                        CodEmpleado,
+                        NombreEmpleado,
+                        ApellidoEmpleado,
+                        CorreoEmpleado,
+                        CargoEmpleado,
+                        TelefonoEmpleado,
+                        AreaEmpleado,
+                        AsuntoTicket,
+                        ObservacionTicket}, this.onEndInsertarTicketDelegate, this.onInsertarTicketCompletedDelegate, userState);
         }
         
         public principal.RegistroTicketsServices.GuardaTicket ObtenerTicket(int Id) {
             return base.Channel.ObtenerTicket(Id);
         }
         
-        public principal.RegistroTicketsServices.GuardaTicket ModificarTicket(int Id, int N_Ticket, System.DateTime F_creacion, string Estado, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket) {
-            return base.Channel.ModificarTicket(Id, N_Ticket, F_creacion, Estado, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket);
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginObtenerTicket(int Id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginObtenerTicket(Id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public principal.RegistroTicketsServices.GuardaTicket EndObtenerTicket(System.IAsyncResult result) {
+            return base.Channel.EndObtenerTicket(result);
+        }
+        
+        private System.IAsyncResult OnBeginObtenerTicket(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int Id = ((int)(inValues[0]));
+            return this.BeginObtenerTicket(Id, callback, asyncState);
+        }
+        
+        private object[] OnEndObtenerTicket(System.IAsyncResult result) {
+            principal.RegistroTicketsServices.GuardaTicket retVal = this.EndObtenerTicket(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnObtenerTicketCompleted(object state) {
+            if ((this.ObtenerTicketCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ObtenerTicketCompleted(this, new ObtenerTicketCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ObtenerTicketAsync(int Id) {
+            this.ObtenerTicketAsync(Id, null);
+        }
+        
+        public void ObtenerTicketAsync(int Id, object userState) {
+            if ((this.onBeginObtenerTicketDelegate == null)) {
+                this.onBeginObtenerTicketDelegate = new BeginOperationDelegate(this.OnBeginObtenerTicket);
+            }
+            if ((this.onEndObtenerTicketDelegate == null)) {
+                this.onEndObtenerTicketDelegate = new EndOperationDelegate(this.OnEndObtenerTicket);
+            }
+            if ((this.onObtenerTicketCompletedDelegate == null)) {
+                this.onObtenerTicketCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnObtenerTicketCompleted);
+            }
+            base.InvokeAsync(this.onBeginObtenerTicketDelegate, new object[] {
+                        Id}, this.onEndObtenerTicketDelegate, this.onObtenerTicketCompletedDelegate, userState);
+        }
+        
+        public principal.RegistroTicketsServices.GuardaTicket ModificarTicket(int Id, int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket) {
+            return base.Channel.ModificarTicket(Id, N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginModificarTicket(
+                    int Id, 
+                    int N_Ticket, 
+                    System.DateTime F_creacion, 
+                    string Estado, 
+                    string Prioridad, 
+                    int CodEmpleado, 
+                    string NombreEmpleado, 
+                    string ApellidoEmpleado, 
+                    string CorreoEmpleado, 
+                    string CargoEmpleado, 
+                    string TelefonoEmpleado, 
+                    string AreaEmpleado, 
+                    string AsuntoTicket, 
+                    string ObservacionTicket, 
+                    System.AsyncCallback callback, 
+                    object asyncState) {
+            return base.Channel.BeginModificarTicket(Id, N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public principal.RegistroTicketsServices.GuardaTicket EndModificarTicket(System.IAsyncResult result) {
+            return base.Channel.EndModificarTicket(result);
+        }
+        
+        private System.IAsyncResult OnBeginModificarTicket(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int Id = ((int)(inValues[0]));
+            int N_Ticket = ((int)(inValues[1]));
+            System.DateTime F_creacion = ((System.DateTime)(inValues[2]));
+            string Estado = ((string)(inValues[3]));
+            string Prioridad = ((string)(inValues[4]));
+            int CodEmpleado = ((int)(inValues[5]));
+            string NombreEmpleado = ((string)(inValues[6]));
+            string ApellidoEmpleado = ((string)(inValues[7]));
+            string CorreoEmpleado = ((string)(inValues[8]));
+            string CargoEmpleado = ((string)(inValues[9]));
+            string TelefonoEmpleado = ((string)(inValues[10]));
+            string AreaEmpleado = ((string)(inValues[11]));
+            string AsuntoTicket = ((string)(inValues[12]));
+            string ObservacionTicket = ((string)(inValues[13]));
+            return this.BeginModificarTicket(Id, N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket, callback, asyncState);
+        }
+        
+        private object[] OnEndModificarTicket(System.IAsyncResult result) {
+            principal.RegistroTicketsServices.GuardaTicket retVal = this.EndModificarTicket(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnModificarTicketCompleted(object state) {
+            if ((this.ModificarTicketCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ModificarTicketCompleted(this, new ModificarTicketCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ModificarTicketAsync(int Id, int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket) {
+            this.ModificarTicketAsync(Id, N_Ticket, F_creacion, Estado, Prioridad, CodEmpleado, NombreEmpleado, ApellidoEmpleado, CorreoEmpleado, CargoEmpleado, TelefonoEmpleado, AreaEmpleado, AsuntoTicket, ObservacionTicket, null);
+        }
+        
+        public void ModificarTicketAsync(int Id, int N_Ticket, System.DateTime F_creacion, string Estado, string Prioridad, int CodEmpleado, string NombreEmpleado, string ApellidoEmpleado, string CorreoEmpleado, string CargoEmpleado, string TelefonoEmpleado, string AreaEmpleado, string AsuntoTicket, string ObservacionTicket, object userState) {
+            if ((this.onBeginModificarTicketDelegate == null)) {
+                this.onBeginModificarTicketDelegate = new BeginOperationDelegate(this.OnBeginModificarTicket);
+            }
+            if ((this.onEndModificarTicketDelegate == null)) {
+                this.onEndModificarTicketDelegate = new EndOperationDelegate(this.OnEndModificarTicket);
+            }
+            if ((this.onModificarTicketCompletedDelegate == null)) {
+                this.onModificarTicketCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnModificarTicketCompleted);
+            }
+            base.InvokeAsync(this.onBeginModificarTicketDelegate, new object[] {
+                        Id,
+                        N_Ticket,
+                        F_creacion,
+                        Estado,
+                        Prioridad,
+                        CodEmpleado,
+                        NombreEmpleado,
+                        ApellidoEmpleado,
+                        CorreoEmpleado,
+                        CargoEmpleado,
+                        TelefonoEmpleado,
+                        AreaEmpleado,
+                        AsuntoTicket,
+                        ObservacionTicket}, this.onEndModificarTicketDelegate, this.onModificarTicketCompletedDelegate, userState);
         }
         
         public principal.RegistroTicketsServices.GuardaTicket EliminarTicket(int Id) {
             return base.Channel.EliminarTicket(Id);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginEliminarTicket(int Id, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginEliminarTicket(Id, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public principal.RegistroTicketsServices.GuardaTicket EndEliminarTicket(System.IAsyncResult result) {
+            return base.Channel.EndEliminarTicket(result);
+        }
+        
+        private System.IAsyncResult OnBeginEliminarTicket(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int Id = ((int)(inValues[0]));
+            return this.BeginEliminarTicket(Id, callback, asyncState);
+        }
+        
+        private object[] OnEndEliminarTicket(System.IAsyncResult result) {
+            principal.RegistroTicketsServices.GuardaTicket retVal = this.EndEliminarTicket(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnEliminarTicketCompleted(object state) {
+            if ((this.EliminarTicketCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.EliminarTicketCompleted(this, new EliminarTicketCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void EliminarTicketAsync(int Id) {
+            this.EliminarTicketAsync(Id, null);
+        }
+        
+        public void EliminarTicketAsync(int Id, object userState) {
+            if ((this.onBeginEliminarTicketDelegate == null)) {
+                this.onBeginEliminarTicketDelegate = new BeginOperationDelegate(this.OnBeginEliminarTicket);
+            }
+            if ((this.onEndEliminarTicketDelegate == null)) {
+                this.onEndEliminarTicketDelegate = new EndOperationDelegate(this.OnEndEliminarTicket);
+            }
+            if ((this.onEliminarTicketCompletedDelegate == null)) {
+                this.onEliminarTicketCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnEliminarTicketCompleted);
+            }
+            base.InvokeAsync(this.onBeginEliminarTicketDelegate, new object[] {
+                        Id}, this.onEndEliminarTicketDelegate, this.onEliminarTicketCompletedDelegate, userState);
+        }
+        
         public principal.RegistroTicketsServices.GuardaTicket[] ListarTicket() {
             return base.Channel.ListarTicket();
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public System.IAsyncResult BeginListarTicket(System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginListarTicket(callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        public principal.RegistroTicketsServices.GuardaTicket[] EndListarTicket(System.IAsyncResult result) {
+            return base.Channel.EndListarTicket(result);
+        }
+        
+        private System.IAsyncResult OnBeginListarTicket(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            return this.BeginListarTicket(callback, asyncState);
+        }
+        
+        private object[] OnEndListarTicket(System.IAsyncResult result) {
+            principal.RegistroTicketsServices.GuardaTicket[] retVal = this.EndListarTicket(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnListarTicketCompleted(object state) {
+            if ((this.ListarTicketCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.ListarTicketCompleted(this, new ListarTicketCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void ListarTicketAsync() {
+            this.ListarTicketAsync(null);
+        }
+        
+        public void ListarTicketAsync(object userState) {
+            if ((this.onBeginListarTicketDelegate == null)) {
+                this.onBeginListarTicketDelegate = new BeginOperationDelegate(this.OnBeginListarTicket);
+            }
+            if ((this.onEndListarTicketDelegate == null)) {
+                this.onEndListarTicketDelegate = new EndOperationDelegate(this.OnEndListarTicket);
+            }
+            if ((this.onListarTicketCompletedDelegate == null)) {
+                this.onListarTicketCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnListarTicketCompleted);
+            }
+            base.InvokeAsync(this.onBeginListarTicketDelegate, null, this.onEndListarTicketDelegate, this.onListarTicketCompletedDelegate, userState);
         }
     }
 }

@@ -7,6 +7,7 @@
         <xs:element minOccurs="0" name="N_Ticket" type="xs:int" />
         <xs:element minOccurs="0" name="F_creacion" type="xs:dateTime" />
         <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Prioridad" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
         <xs:element minOccurs="0" name="NombreEmpleado" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ApellidoEmpleado" nillable="true" type="xs:string" />
@@ -47,6 +48,7 @@
         <xs:element minOccurs="0" name="N_Ticket" type="xs:int" />
         <xs:element minOccurs="0" name="F_creacion" type="xs:dateTime" />
         <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Prioridad" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="CodEmpleado" type="xs:int" />
         <xs:element minOccurs="0" name="NombreEmpleado" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="ApellidoEmpleado" nillable="true" type="xs:string" />

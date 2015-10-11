@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="RegistroTickets.aspx.cs" Inherits="principal.RegistroTickets" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="False" CodeBehind="~/RegistroTickets.aspx.cs" Inherits="principal.RegistroTickets" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <div id="formulario">
@@ -69,10 +69,8 @@
             </tr>
         </table>
         <%--    </asp:Panel>--%>
-
         <%--       <asp:Panel Height="1px" ID="Panel2" runat="server">
         </asp:Panel>--%>
-
         <%--  <asp:Panel class="col-Tablebox" Height="420px" ID="Panel1" runat="server" >--%>
         <table width="950px" style="border: 1px double #666666; border-radius: 6px; -webkit-box-shadow: 10 1px 2px #ff0000; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 11px; color: #3C3C3C; background-color: #FFFFFF;">
             <tr>
@@ -99,7 +97,7 @@
             </tr>
             <tr>
                 <td>
-                    <asp:DropDownList CssClass="col-box" ID="comb_estado" runat="server">
+                    <asp:DropDownList CssClass="col-box" ID="comb_estado" runat="server" OnSelectedIndexChanged="comb_estado_SelectedIndexChanged">
                     </asp:DropDownList>
 
                 </td>
@@ -148,7 +146,9 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="3">&nbsp;</td>
+                <td colspan="3">
+                    <asp:Label ID="lbl_mensaje" runat="server" Text="Label"></asp:Label>
+                </td>
             </tr>
             <tr>
                 <td colspan="3">&nbsp;</td>

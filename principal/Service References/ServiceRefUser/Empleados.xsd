@@ -9,6 +9,8 @@
         <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AreaEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -42,6 +44,8 @@
         <xs:element minOccurs="0" name="CargoEmpleado" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="AreaEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -75,6 +79,21 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" minOccurs="0" name="ListarEmpleadosResult" nillable="true" type="q5:ArrayOfEmpleado" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerificarUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="NonmbreEmpleado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VerificarUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Usuarios_SOAPService.Dominio" minOccurs="0" name="VerificarUsuarioResult" nillable="true" type="q6:Empleado" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="False" CodeBehind="Master.master.cs" Inherits="principal.Master" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../Css/style.css" type="text/css" media="all" />
+    <script src="../Scripts/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="../Scripts/general.js" type="text/javascript"></script>
+    <%--<script src="SCripts/jquery.jcarousel.pack.js" type="text/javascript"></script>
+    <script src="SCripts/jquery-func.js" type="text/javascript"></script>--%>
+    <title></title>
+
+    <style type="text/css">
+        .auto-style1 {
+            width: 60px;
+            height: 53px;
+        }
+        #img_User {
+            height: 50px;
+            width: 61px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="formulario">
+            <table>
+                <tr>
+                    <td width="15%" rowspan="3">
+                        <asp:Image ID="Image1" runat="server" ImageUrl="~/Css/images/Control_1.png" ImageAlign="Bottom" Height="74px" Width="127px" />                        
+                                            
+                    </td>
+                    <td width="50%"rowspan="3" >
+                        &nbsp;</td>
+                    <td width="15%" rowspan="3">
+                        <img id="img_User" src="../Css/images/usuario.jpg" alt="1px" align="right"/></td>
+                    <td width="20%" >
+                        <asp:Label ID="lblUsuario" runat="server"></asp:Label>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td width="200px" style="width: 0; ">
+                        <asp:Label ID="lblCargo" runat="server"></asp:Label>
+                    </td>
+                    
+                </tr>
+                <tr>
+                    <td width="200px" style="width: 0; " align="right">
+                        <asp:Button ID="btn_logout" runat="server" Text="Logout" Width="105px" />
+                    </td>                    
+                </tr>
+                <tr>
+                    <td colspan="4">
+                        <div id="Header1">
+                            <ul class="nav" style="background-color: #848484; width: 950px;">
+                                <li><a href="../Interfaces/Bandeja.aspx">Bandeja</a></li>
+                                <li><a href="../Interfaces/RegistroTickets.aspx">Registro de Tickets</a></li>
+                                <li><a href="aaa">Consultas</a></li>
+                                <li><a href="aaa">Reportes</a></li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>                
+            </table>
+            
+            <div style="height: 21px">
+                <table class="col">
+                    <tr>
+                    <td>
+                        <asp:ContentPlaceHolder ID="head" runat="server">
+
+                        </asp:ContentPlaceHolder>
+
+                    </td>
+                        </tr>
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </table>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

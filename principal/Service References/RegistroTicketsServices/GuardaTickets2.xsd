@@ -13,8 +13,8 @@
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="N_ticket" type="xs:int" />
       <xs:element minOccurs="0" name="NombreEmpleado" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Obs_atencion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="ObservacionTicket" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Prioridad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TelefonoEmpleado" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
